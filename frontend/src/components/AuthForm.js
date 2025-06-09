@@ -19,15 +19,15 @@ function AuthForm() {
           data && data.errors &&
           <ul>
             {
-              Object.values(data.errors).map((error) => (<li>
-                { error }
+              Object.values(data.errors).map((error) => (<li key={error}>
+                {error}
               </li>)
               )
             }
-            {
-              data && data.message && <p>{ data.message }</p>
-            }
           </ul>
+        }
+        {
+          data && data.message && <p>{data.message}</p>
         }
         <p>
           <label htmlFor="email">Email</label>
@@ -38,10 +38,10 @@ function AuthForm() {
           <input id="password" type="password" name="password" required />
         </p>
         <div className={classes.actions}>
-          <Link to={`?mode=${ isLogin ? 'signup' : 'login'}`}>
+          <Link to={`?mode=${isLogin ? 'signup' : 'login'}`}>
             {isLogin ? 'Create new user' : 'Login'}
           </Link>
-          <button disabled={ isSubmitting }>{ isSubmitting ? 'Submitting' : 'Save' }</button>
+          <button disabled={isSubmitting}>{isSubmitting ? 'Submitting' : 'Save'}</button>
         </div>
       </Form>
     </>
